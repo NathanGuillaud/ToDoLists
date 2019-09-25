@@ -1,10 +1,22 @@
 import React from 'react';
-import TaskForm from './TaskForm';
+import Task from './Task'
+import AddTask from '../containers/AddTask'
 
-const Task = (props) => {
-    return <li>{props.name}</li>
-}
+const TaskList = ({title, tasks}) => (
+        <div style={{ display: 'inline-block' }}>
+                <h2>{title}</h2>
+                <ul>
+                    {tasks.map((task, index) => (
+                        <Task key={index} name={task} {...task} />
+                    ))}
+                </ul>
+                <AddTask/>
+            </div>
+  )
+/*
+                <TaskForm handleClick={this.addTask} />
 
+                
 class TaskList extends React.Component {
     constructor(props) {
         super(props)
@@ -34,5 +46,5 @@ class TaskList extends React.Component {
         )
     }
 }
-
+*/
 export default TaskList;
